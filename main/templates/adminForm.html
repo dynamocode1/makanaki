@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- ScrollMagic and GSAP CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/scrollmagic/2.0.8/scrollmagic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/scrollmagic/2.0.8/plugins/debug.addIndicators.min.css">
+
+    <!-- GSAP (GreenSock Animation Platform) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+
+    <!-- ScrollMagic and GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollmagic/2.0.8/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollmagic/2.0.8/plugins/debug.addIndicators.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollmagic/2.0.8/plugins/animation.gsap.min.js"></script>
+</head>
+<style>
+     .container {
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+</style>
+<body>
+    <form method="POST" action="/admin/loginadmin">
+        {# Check for flashed messages and display them #}
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    <div class="alert alert-info">
+                        <ul>
+                            {% for category, message in messages %}
+                            <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+        <div class = 'container mt-5'>
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Password:</label>
+                <input type="password" class="form-control" id="username" name="Password" placeholder="Enter your Password" required>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                
+            </div>
+
+            
+        </div>
+    </form>
+</body>
+</html>

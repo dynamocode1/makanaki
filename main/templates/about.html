@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+{% block page_contents %}
+    <title>About Comedian</title>
+    <style>
+        /* Custom Styles */
+        .comedian-image {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .about-section {
+            padding: 20px;
+        }
+
+        .contact-form {
+            margin-top: 20px;
+        }
+
+        .fa-icon {
+            color: #f5a623;
+            margin-right: 10px;
+        }
+
+        .gallery-image:hover {
+            transform: scale(1.05); /* Add a slight zoom effect on hover */
+        }
+
+        .ceo-image {
+            width: 600px;
+            height: 400px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Custom Styles for Image Gallery */
+        .gallery-image {
+            width: 400px;
+            height: 300px;
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.5s;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <!-- Comedian Image (large on the right) -->
+            <div class="col-lg-6 fade-in-section">
+                <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/380178964_343435838099950_4955171833641109929_n.jpg?stp=dst-jpg_s206x206&_nc_cat=105&ccb=1-7&_nc_sid=510075&_nc_ohc=snVcfigeY94AX94bhF4&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdQcomA8Q_PH3Kn94kxRz_4TiFrwS22371pSssI72JO7vw&oe=655FE848" alt="Comedian" class="comedian-image ceo-image">
+            </div>
+
+            <!-- About Comedian Details (left) -->
+            <div class="col-lg-6 about-section fade-in-section">
+                <h2>About the Comedian</h2>
+                <p>Meet our hilarious comedian, MakaNaki, known for his side-splitting stand-up performances and witty one-liners. With a career spanning over a decade, John has brought joy and laughter to audiences around the world.</p>
+
+                <p>John was born on May 2, 2007, in the vibrant city of LaughterVille. He's not just a funny guy; John is also a dedicated philanthropist, supporting various charitable causes. In his free time, you can find him perfecting his craft and exploring new comedic horizons.</p>
+
+                <h4>Contact Details</h4>
+                <ul>
+                    <li><strong><i class="fas fa-map-marker fa-icon"></i>Address:</strong> 1234 Comedy Lane, Laughter City</li>
+                    <li><strong><i class="fas fa-birthday-cake fa-icon"></i>Date of Birth:</strong> April 1, 1980</li>
+                    <li><strong><i class="fas fa-phone fa-icon"></i>Phone:</strong> +1 (555) 123-4567</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Responsive Images -->
+    <div class="container mt-5">
+        <h3>Photo Gallery</h3>
+        <div class="row fade-in-section">
+            <div class="col-md-4">
+                <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/384561944_1031947537988403_8451785152488985637_n.jpg?stp=dst-jpg_s280x280&_nc_cat=108&ccb=1-7&_nc_sid=510075&_nc_ohc=Wju1cOQsK40AX__YRNU&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdRBuHjyKqc_M9iFUBg7UXsF3f1TUOFo3aTnK7OajQmvPQ&oe=655FFC83" alt="Comedian Show 1" class="img-fluid gallery-image">
+            </div>
+            <div class="col-md-4 fade-in-section">
+                <img src="https://scontent-los2-1.xx.fbcdn.net/v/t1.15752-9/385525604_1517786785723693_7053548963539634388_n.jpg?stp=dst-jpg_s206x206&_nc_cat=108&ccb=1-7&_nc_sid=510075&_nc_ohc=wvUP5lb1mxgAX-efV6E&_nc_ht=scontent-los2-1.xx&oh=03_AdQ4MsdfmVQ-lqlGUe3covi0ArNhW9IvpglY6HlVseLQSg&oe=655FED67" alt="Comedian Show 2" class="img-fluid gallery-image">
+            </div>
+            <div class="col-md-4 fade-in-section">
+                <img src="https://scontent.xx.fbcdn.net/v/t1.15752-9/380486630_1483177739189087_5865867418195016063_n.jpg?stp=dst-jpg_p168x128&_nc_cat=105&ccb=1-7&_nc_sid=510075&_nc_ohc=IGcSAp3hPUkAX_6W9ML&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdSpcsrhzko49tNRzvoncGA83wZd-D2T8vXh-_O9B5W5uw&oe=656002D6" alt="Comedian Show 3" class="img-fluid gallery-image">
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Text -->
+    <div class="container mt-5 fade-in-section">
+        <h3>More About MakaNaki</h3>
+        <p>MakaNaki is a master of improvisation, making each performance a unique experience for his audience. His sense of humor is not only entertaining but also thought-provoking. MakaNaki has a knack for turning everyday situations into hilarious anecdotes that everyone can relate to.</p>
+    </div>
+
+    <!-- Contact Us Form -->
+    <div class="container mt-5 fade-in-section">
+        <h3>Contact MakaNaki</h3>
+        <div class="row fade-in-section">
+            <div class="col-md-6 fade-in-section">
+                <form class="contact-form" action="/contact" method="post">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize ScrollMagic controller
+        var controller = new ScrollMagic.Controller();
+
+        // Define a fade-in animation for each section
+        var fadeInSections = document.querySelectorAll('.fade-in-section');
+
+        fadeInSections.forEach(function(section) {
+            var fadeInScene = new ScrollMagic.Scene({
+                triggerElement: section,
+                triggerHook: 0.8, // Adjust this value as needed
+                reverse: false, // Whether to animate only once
+            })
+            .setTween(TweenMax.from(section, 1, { opacity: 0, y: 50 })) // Customize animation
+            .addTo(controller);
+        });
+    </script>
+
+    <!-- AddIndicators for debugging (remove this in production) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollmagic/2.0.8/plugins/debug.addIndicators.min.js"></script>
+
+    <!-- GSAP (GreenSock Animation Platform) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+
+    <!-- ScrollMagic and GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollmagic/2.0.8/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/scrollmagic/2.0.8/plugins/animation.gsap.min.js"></script>
+</body>
+{% endblock %}

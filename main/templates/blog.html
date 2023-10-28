@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% block page_contents %}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .main-content {
+        flex: 1; /* Updated to allow more space for the main content */
+    }
+
+    .sidebar {
+        flex: 0.3; /* Reduce the sidebar size */
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        display: block; /* Show the sidebar by default */
+    }
+
+    /* Hide the sidebar on smaller devices */
+    @media (max-width: 768px) {
+        .sidebar {
+            display: none;
+        }
+    }
+
+    .blog {
+        margin: 20px 0;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 10px;
+    }
+
+    .blog-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: #42b5f3;
+        color: white;
+    }
+
+    .blog-image {
+        max-width: 100%;
+        max-height: 60%;
+    }
+
+    .blog-content {
+        padding: 20px;
+    }
+
+    .comment-section {
+        display: none;
+        margin-top: 10px;
+    }
+
+    .comment-section input {
+        width: 100%;
+        padding: 5px;
+        margin: 5px 0;
+    }
+
+    .like-button {
+        cursor: pointer;
+        color: #777;
+    }
+
+    .like-button.active {
+        color: red;
+    }
+</style>
+</head>
+
+<body>
+<div class="container">
+    <div class="main-content">
+    	{% for post in blog_posts %}
+
+        <div class="blog">
+            <div class="blog-header">
+                <h2>{{post.title}}</h2>
+                <a href = "/main/blog/add_likes/{{post.id}}"><i class="far fa-heart like-button"></i></a>
+            </div>
+            <img class="blog-image" src="{{post.image}}" alt="Blog Image 2">
+            <div class="blog-content">
+                <p>{{post.body[:35]}}  <a href="/main/blog/view/{{post.id}}" style="margin-left: 20%;">Read More</a></p>
+                <button class="comment-toggle">Add Comment</button>
+                <div class="comment-section">
+                	<form method="POST" action="/main/blog/add_comments/{{post.id}}">
+                    	<input type="text" placeholder="Add your comment..." name="comment">
+                    	<input type="submit" value="Add Comment">
+                	</form>
+                </div>
+            </div>
+
+            {%endfor%}
+        </div>
+    </div>
+    <div class="sidebar">
+        <h3>Recent Blogs</h3>
+        <ul>
+        	{%for blog in blog_posts%}
+            <li>
+            	<a href="">{{blog.title}}</a>
+            </li>
+            {%endfor%}
+            
+        </ul>
+    </div>
+</div>
+
+<script>
+    const commentToggles = document.querySelectorAll('.comment-toggle');
+    const commentSections = document.querySelectorAll('.comment-section');
+    const likeButtons = document.querySelectorAll('.like-button');
+
+    commentToggles.forEach((toggle, index) => {
+        toggle.addEventListener('click', () => {
+            commentSections[index].style.display = commentSections[index].style.display === 'none' ? 'block' : 'none';
+        });
+    });
+
+    likeButtons.forEach((likeButton) => {
+        likeButton.addEventListener('click', () => {
+            likeButton.classList.toggle('active');
+        });
+    });
+</script>
+{% endblock %}
+</body>
+</html>

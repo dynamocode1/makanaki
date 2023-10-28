@@ -1,0 +1,48 @@
+{%extends 'base.html'%}
+{%block page_contents%}
+<style >
+	 .blog {
+        margin: 20px 0;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 10px;
+    }
+    .comments {
+            max-height: 300px;
+            overflow-y: scroll;
+        }
+    .comments-width{
+    	width: 40%;
+    }
+</style>
+<div class="container mt-4">
+        <div class="shadow p-4">
+        	<p>{{blogs.date}}</p>
+            <h1 style="text-justify: center;te">{{blogs.title}}</h1>
+            <a href="{{blogs.image}}"><img src="{{blogs.image}}" alt="Blog Image" class="img-fluid" width="600" height="400"></a>
+            <p class="mt-3">
+                {{blogs.body}}
+            </p>
+            <div class="mt-4">
+                <h2 style="margin-left:40%;margin-right: 60%;">Comments</h2>
+               	{%for com in comment%}
+                <div class="media mb-3 comment-width">
+
+                    <div class="media-body shadow p-4">
+                        <p class="mt-0" style="font-size: 1.5rem;font-family: sans-serif;">By {{com.username.capitalize()}}<p>
+                        <hr style="color: rgba(150, 10, 10, 1.0);" />
+                        <p style="font-size:1rem;font-family: cursive;">{{com.text}}</p>
+                    </div>
+                </div>
+                {%endfor%}
+	                <form method="POST" action="/main/blog/add_comments/{{blogs.id}}">
+	        	<input type="text" placeholder="Add your comment..." name="comment">
+	        	<input type="submit" value="Add Comment">
+	         </form>
+                
+            </div>
+        </div>
+        
+    </div>
+{%endblock%}

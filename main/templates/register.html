@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% block page_contents %}
+<style>
+    <!-- Your CSS styles -->
+</style>
+</head>
+<body>
+<form method="POST" action="/auth/register">
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 d-none d-lg-block">
+            <img src="https://images.unsplash.com/photo-1697647753520-fb49c78ba64f?auto=format&fit=crop&q=60&w=400&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDZ8dG93SlpGc2twR2d8fGVufDB8fHx8fA%3D%3D" class="img-fluid"
+                alt="Signup Image">
+        </div>
+        <div class="col-lg-6 col-sm-12">
+            <div class="form-container">
+                <h1>Signup</h1>
+                {# Check for flashed messages and display them #}
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                <div class="alert alert-info">
+                    <ul>
+                        {% for category, message in messages %}
+                        <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                {% endwith %}
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password:</label>
+                    <input type="password" class="form-control" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+                </div>
+                <div class="form-group show-password">
+                    <input type="checkbox" id="show-password-checkbox"> Show Password
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
+                <p class="mt-3">Already have an account? <a href="{{url_for('auth.login')}}">Login</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const formContainer = document.querySelector(".form-container");
+        formContainer.style.opacity = 1;
+        formContainer.style.transform = "translateX(0)";
+    });
+
+    const showPasswordCheckbox = document.getElementById("show-password-checkbox");
+    showPasswordCheckbox.addEventListener("change", function() {
+        const passwordInput = document.getElementById("password");
+        if (this.checked) {
+            passwordInput.type = "text";
+        } else {
+            passwordInput.type = "password";
+        }
+    });
+</script>
+
+</body>
+</html>
+
+{% endblock %}
