@@ -1,6 +1,5 @@
 from flask import Flask,g,request,make_response,session,url_for,redirect,render_template
 from flask_login import LoginManager
-from flask_session import Session
 from config import AppConfig
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
